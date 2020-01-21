@@ -6,9 +6,14 @@ module.exports = app => {
   // Your code here
   app.log('Yay, the app was loaded!')
 
-  app.on('issues.opened', async context => {
-    const issueComment = context.issue({ body: 'Thanks for opening this issue!' })
-    return context.github.issues.createComment(issueComment)
+  app.on('check_suite.requested', async context => {
+     context.log('check_suite.requested')
+    // console.log(context)
+     
+     const repo = context.repo();
+     context.log(repo)
+     
+     
   })
 
   // For more information on building apps:
